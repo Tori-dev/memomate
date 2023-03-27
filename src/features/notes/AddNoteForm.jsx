@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewNote } from './noteSlice';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast} from 'react-toastify';
+import {  toast} from 'react-toastify';
 import './Notes.scss'
+import { useNavigate } from 'react-router';
 
 const AddNoteForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     noteTitle: "",
     noteContent: ""
@@ -46,8 +48,9 @@ const AddNoteForm = () => {
   const onSaveNoteClicked = () => {
     if(!titleError && !contentError){
       dispatch(addNewNote(formData));
-      toast.success("New Note added successfully");
+      toast.success("Note Added");
       setFormData({noteTitle: "", noteContent: ""});
+      navigate('/note')
     }
   }
 
@@ -67,7 +70,6 @@ const AddNoteForm = () => {
           </div>
 
           <button type = "button" onClick={(onSaveNoteClicked)} className = "btn btn-default" disabled = {!canSave}>Save Note</button>
-          <ToastContainer />
         </form>
       </section>
     </div>

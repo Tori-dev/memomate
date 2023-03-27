@@ -23,17 +23,15 @@ const SingleNotePage = () => {
   };
 
   return (
-<section>
-
+    <section>
       <div className="options">
         <Link to="/note">
           <FiArrowLeft />
         </Link>
         <span className="option">
-          <span>
+          <Link to={`/edit/${id}`} className="notes-item-btn">
             <FiEdit />
-            Edit
-          </span>
+          </Link>
           <button onClick={handleDeleteNote}>
             <AiOutlineDelete />
             Delete
@@ -41,16 +39,16 @@ const SingleNotePage = () => {
           <ToastContainer />
         </span>
       </div>
-    <div className="note-single-section px-4">
-      <div className="note-single-title">
-        <h2 className="my-2 fs-20">{tempNote[0].noteTitle}</h2>
-      </div>
+      <div className="note-single-section px-4">
+        <div className="note-single-title">
+          <h2 className=" fs-20">{tempNote[0].noteTitle}</h2>
+        </div>
 
-      <div className="py-4">
-        <pre>{tempNote[0].noteContent}</pre>
+        <div className="py-4">
+          <textarea readOnly rows={25}>{tempNote[0].noteContent}</textarea>
+        </div>
       </div>
-    </div>
-</section>
+    </section>
   );
 };
 

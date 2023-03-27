@@ -1,6 +1,7 @@
 import "./App.scss";
 import { Home, AddNote, EditNote, Notes, SingleNote } from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }

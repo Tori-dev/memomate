@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import "./Notes.scss";
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editNote, getAllNotes } from './noteSlice';
 import 'react-toastify/dist/ReactToastify.css';
-import {ToastContainer, toast} from 'react-toastify';
+import { toast} from 'react-toastify';
 
 const EditNoteForm = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const notes = useSelector(getAllNotes);
+  const navigate = useNavigate()
   let tempNote = notes.filter(note => note.noteId === id);
 
   const [formData, setFormData] = useState(tempNote[0]);
@@ -49,7 +50,8 @@ const EditNoteForm = () => {
     if(!titleError && !contentError){
       console.log(formData);
       dispatch(editNote(formData));
-      toast("Note edited successfully");
+      toast.success("Note edited");
+      navigate(`/note/${id}`)
       setFormData({noteTitle: "", noteContent: ""});
     }
   }
@@ -72,7 +74,6 @@ const EditNoteForm = () => {
           </div>
 
           <button type = "button" onClick={(onSaveNoteClicked)} className = "btn btn-default" disabled = {!canSave}>Save Note</button>
-          <ToastContainer />
         </form>
       </section>
     </div>
