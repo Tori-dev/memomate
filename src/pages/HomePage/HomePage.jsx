@@ -22,16 +22,7 @@ const HomePage = () => {
       <Sidebar />
       <div className='app-main'>
         <header className='header w-100 flex align-center'>
-          <div className='container w-100'>
-            <div className='header-content flex align-center justify-between text-white py-3'>
-              <div className='greetings'>
-                <h3 className='fw-6 fs-26'>{greetText}</h3>
-              </div>
-              <div className='date'>
-                <span className='text-uppercase fs-13 fw-4'>{date}</span>
-              </div>
-            </div>
-          </div>
+          afa
         </header>
         <div className='notes-wrapper'>
           <Outlet />
